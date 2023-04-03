@@ -30,6 +30,8 @@ runs:
   steps:
     - name: Create GH Action
       shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         repo=''
         label=''
