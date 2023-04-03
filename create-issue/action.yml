@@ -38,6 +38,7 @@ runs:
         fi
         echo "repo=$repo" >> $GITHUB_ENV
     - run: gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
+      shell: bash
       # name: Create GH Issue
       # shell: bash
       env:
