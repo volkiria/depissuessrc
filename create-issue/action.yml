@@ -37,13 +37,11 @@ runs:
           repo="--repo ${{ inputs.repository }}";
         fi
         echo "repo=$repo" >> $GITHUB_ENV
-    - run: gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
+    - name: Create GH Issue
+      run: gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
       shell: bash
-      # name: Create GH Issue
-      # shell: bash
-      # env:
-      #   GITHUB_TOKEN: ${{ inputs.access_token }}
-      #   GH_TOKEN: ${{ github.token }}
+      env:
+        GITHUB_TOKEN: ${{ inputs.access_token }}
     # - name: Create GH Action
     #   shell: bash
     #   env:
