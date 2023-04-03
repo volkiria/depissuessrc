@@ -1,0 +1,37 @@
+name: "Create issue with parameters"
+description: "Creates GH Issue with parameter values defined in inputs"
+
+inputs:
+    repository:
+      description: Github repository where action to be created
+      type: string
+      required: false
+      default: '.'
+    access_token:
+      description: Github token to use while creating the issue in repmote repository. Pass PAT existing oin remote repository
+      type: string
+      required: false
+      default: $GITHUB_TOKEN
+    title:
+      description: Title to be configured for the issue
+      type: string
+      required: true
+    body:
+      description: Body to be configured for the issue
+      type: string
+      required: true
+    labels:
+      description: A list of labels to be configured for the issue (coma separated list of existing labels in the target repository)
+      type: string
+      required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Create GH Action
+      shell: bash
+      run: |
+        repo=''
+        label=''
+        if [ "${{ inputs.repository }}" != "." ]; then repo="--repo ${{ inputs.repository }} --with-token ${{ inputs.access_token }}"; fi
+        echo gh issue create --title ${{ inputs.title }} --body "${{ inputs.body }}" --label ${{ inputs.labels }} "$repo"
