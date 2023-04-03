@@ -27,11 +27,11 @@ inputs:
 
 runs:
   using: "composite"
-  env:
-    GH_TOKEN: ${{ inputs.access_token }}
   steps:
     - name: Create GH Action
       shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.access_token }}
       run: |
         repo=''
         label=''
