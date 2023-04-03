@@ -35,5 +35,5 @@ runs:
       run: |
         repo=''
         label=''
-        if [ "${{ inputs.repository }}" != "." ]; then repo="--repo ${{ inputs.repository }} --with-token ${{ inputs.access_token }}"; fi
+        if [ "${{ inputs.repository }}" != "." ]; then repo="--repo ${{ inputs.repository }}"; fi
         gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
