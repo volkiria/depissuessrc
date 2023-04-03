@@ -37,24 +37,7 @@ runs:
         echo "repo=$repo" >> $GITHUB_ENV
     - name: Create GH Issue
       run: gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
-      # run: unset GT_TOKEN && export GITHUB_TOKEN=${{ inputs.access_token }} && gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
       shell: bash
       env:
         GH_TOKEN: ${{ inputs.access_token }}
-        GITHUB_TOKEN: ${{ inputs.access_token }}
-    # - name: Create GH Action
-    #   shell: bash
-    #   env:
-    #     GITHUB_TOKEN: ${{ inputs.access_token }}
-    #     # GH_TOKEN: ${{ github.token }}
-    #   run: |
-    #     repo=''
-    #     label=''
-    #     if [ "${{ inputs.repository }}" != "." ]; 
-    #     then 
-    #       repo="--repo ${{ inputs.repository }}";
-    #       unset GH_TOKEN
-    #       gh auth login --with-token ${{ inputs.access_token }}
-    #     fi
-    #     echo gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
-    #     gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
+        # GITHUB_TOKEN: ${{ inputs.access_token }}
