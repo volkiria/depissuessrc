@@ -24,11 +24,11 @@ inputs:
       description: A list of labels to be configured for the issue (coma separated list of existing labels in the target repository)
       type: string
       required: true
-env:
-  GH_TOKEN: ${{ inputs.access_token }}      
 
 runs:
   using: "composite"
+  env:
+    GH_TOKEN: ${{ inputs.access_token }}
   steps:
     - name: Create GH Action
       shell: bash
