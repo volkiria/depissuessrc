@@ -38,7 +38,7 @@ runs:
         fi
         echo "repo=$repo" >> $GITHUB_ENV
     - name: Create GH Issue
-      run: unset GT_TOKEN && gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
+      run: unset GT_TOKEN && export GITHUB_TOKEN=${{ inputs.access_token }} && gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.access_token }}
