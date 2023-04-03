@@ -43,6 +43,7 @@ runs:
       # shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.access_token }}
+        GH_TOKEN: ${{ inputs.access_token }}
         # GH_TOKEN: ${{ github.token }}
     # - name: Create GH Action
     #   shell: bash
