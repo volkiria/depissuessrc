@@ -9,9 +9,7 @@ inputs:
       default: '.'
     access_token:
       description: Github token to use while creating the issue in remote repository. Pass PAT existing oin remote repository
-      type: string
       required: false
-      default: ${{ github.token }}
     title:
       description: Title to be configured for the issue
       type: string
