@@ -39,7 +39,7 @@ runs:
         if [ "${{ inputs.repository }}" != "." ]; 
         then 
           repo="--repo ${{ inputs.repository }}";
-          # unset GH_TOKEN
+          unset GH_TOKEN
           gh auth login --with-token ${{ inputs.access_token }}
         fi
         echo gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
