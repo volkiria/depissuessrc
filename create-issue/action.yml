@@ -35,7 +35,10 @@ runs:
       run: |
         repo=''
         label=''
-        export GH_TOKEN="${{ inputs.access_token }}"
-        if [ "${{ inputs.repository }}" != "." ]; then repo="--repo ${{ inputs.repository }}"; fi
+        if [ "${{ inputs.repository }}" != "." ]; 
+        then 
+          repo="--repo ${{ inputs.repository }}";
+          gh auth login --with-token ${{ inputs.access_token }}
+        fi
         echo gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
         gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
