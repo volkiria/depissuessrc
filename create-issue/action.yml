@@ -30,10 +30,9 @@ runs:
   steps:
     - name: Create GH Action
       shell: bash
-      env:
-        GH_TOKEN: ${{ inputs.access_token }}
       run: |
         repo=''
         label=''
+        export GH_TOKEN="${{ inputs.access_token }}"
         if [ "${{ inputs.repository }}" != "." ]; then repo="--repo ${{ inputs.repository }}"; fi
         gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
