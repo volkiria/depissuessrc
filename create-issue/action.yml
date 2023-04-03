@@ -8,7 +8,7 @@ inputs:
       required: false
       default: '.'
     access_token:
-      description: Github token to use while creating the issue in repmote repository. Pass PAT existing oin remote repository
+      description: Github token to use while creating the issue in remote repository. Pass PAT existing oin remote repository
       type: string
       required: false
       default: ${{ github.token }}
@@ -37,4 +37,5 @@ runs:
         label=''
         export GH_TOKEN="${{ inputs.access_token }}"
         if [ "${{ inputs.repository }}" != "." ]; then repo="--repo ${{ inputs.repository }}"; fi
+        echo gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
         gh issue create --title "${{ inputs.title }}" --label "${{ inputs.labels }}" --body "${{ inputs.body }}" $repo
